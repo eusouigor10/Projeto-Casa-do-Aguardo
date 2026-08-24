@@ -7,7 +7,7 @@ Organizar o sistema em camadas, separando responsabilidades e facilitando
 a manutenção, testes e evolução do projeto.
 
 
-1. model
+# 1. model
 ---------
 Responsável por representar os dados e as entidades do sistema.
 
@@ -27,7 +27,7 @@ Exemplos:
 - Usuario
 
 
-2. repository
+# 2. repository
 -------------
 Responsável pelo acesso aos dados no banco SQLite.
 
@@ -46,7 +46,7 @@ Exemplos:
 - UsuarioRepository
 
 
-3. service
+# 3. service
 -----------
 Responsável pelas regras de negócio do sistema.
 
@@ -64,7 +64,7 @@ Exemplos:
 - RelatorioService
 
 
-4. controller
+# 4. controller
 -------------
 Responsável por receber as ações da interface JavaFX e coordenar as
 operações necessárias.
@@ -83,7 +83,7 @@ Exemplos:
 - RelatorioController
 
 
-5. view
+# 5. view
 --------
 Responsável pela interface gráfica do JavaFX.
 
@@ -96,7 +96,7 @@ Observação:
 A lógica de negócio deve ficar no Service, e não na View.
 
 
-6. database
+# 6. database
 -----------
 Responsável pela configuração e inicialização do banco SQLite.
 
@@ -112,7 +112,7 @@ Exemplos:
 - DatabaseInitializer
 
 
-7. util
+# 7. util
 --------
 Responsável por funcionalidades auxiliares e reutilizáveis.
 
@@ -128,7 +128,7 @@ Só colocar aqui funções realmente reutilizáveis e que não pertençam
 claramente a outra camada.
 
 
-8. Main / aplicação
+# 8. Main / aplicação
 -------------------
 Responsável por iniciar o sistema.
 
