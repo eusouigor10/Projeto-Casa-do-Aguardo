@@ -20,7 +20,8 @@ public class InterfaceMain extends Application{
 
         primaryStage.setTitle("Sistema CAPHO - Login");
         primaryStage.setScene(scene);
-        primaryStage.setResizable(false);
+        primaryStage.setMaximized(true);
+        primaryStage.setResizable(true);
         primaryStage.show();    
     }
 }
