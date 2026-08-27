@@ -16,7 +16,7 @@ public class InterfaceMain extends Application{
         LoginView loginView = new LoginView();
 
         // Passa o layout da view para a Scene
-        Scene scene = new Scene(loginView.getRoot(), 420, 560);
+        Scene scene = new Scene(loginView.getRoot(), 1200, 700);
 
         primaryStage.setTitle("Sistema CAPHO - Login");
         primaryStage.setScene(scene);
