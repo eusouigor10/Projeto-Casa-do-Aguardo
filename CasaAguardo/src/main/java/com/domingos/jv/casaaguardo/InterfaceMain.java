@@ -1,5 +1,6 @@
 package com.domingos.jv.casaaguardo;
 
+import controller.LoginController;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
@@ -14,6 +15,9 @@ public class InterfaceMain extends Application{
     @Override
     public void start(Stage primaryStage) {
         LoginView loginView = new LoginView();
+        
+        LoginController loginController =
+            new LoginController(loginView);
 
         // Passa o layout da view para a Scene
         Scene scene = new Scene(loginView.getRoot(), 1200, 700);

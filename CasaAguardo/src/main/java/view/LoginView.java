@@ -19,9 +19,17 @@ import javafx.scene.text.FontWeight;
 
 public class LoginView {
 
+    // =========================================================
+    // COMPONENTES
+    // =========================================================
+
     private TextField txtUsuario;
     private PasswordField txtSenha;
     private Button btnEntrar;
+
+    private Label lblErroUsuario;
+    private Label lblErroSenha;
+
     private StackPane rootLayout;
 
     public LoginView() {
@@ -30,12 +38,8 @@ public class LoginView {
 
     private void criarLayout() {
 
-        // =========================================================
-        // 1. LOGO - LADO ESQUERDO
-        // =========================================================
-
         Image logo = new Image(
-            getClass().getResourceAsStream("/images/logosb.png")
+            getClass().getResourceAsStream("/images/logo.jpg")
         );
 
         ImageView logoView = new ImageView(logo);
@@ -43,11 +47,7 @@ public class LoginView {
         logoView.setFitWidth(420);
         logoView.setFitHeight(420);
         logoView.setPreserveRatio(true);
-
-
-        // =========================================================
-        // 2. CABEÇALHO DO LOGIN
-        // =========================================================
+        logoView.setTranslateX(-80);
 
         VBox headerBox = new VBox(6);
 
@@ -98,12 +98,7 @@ public class LoginView {
             lblSubtitulo
         );
 
-
-        // =========================================================
-        // 3. FORMULÁRIO
-        // =========================================================
-
-        VBox formBox = new VBox(12);
+        VBox formBox = new VBox(8);
 
         formBox.setPadding(
             new Insets(25, 30, 25, 30)
@@ -112,9 +107,6 @@ public class LoginView {
         formBox.setAlignment(
             Pos.TOP_LEFT
         );
-
-
-        // Título
 
         Label lblFacaLogin = new Label(
             "Faça seu login"
@@ -140,10 +132,10 @@ public class LoginView {
             Pos.CENTER
         );
 
-
-        // =========================================================
-        // USUÁRIO
-        // =========================================================
+        VBox.setMargin(
+            lblFacaLogin,
+            new Insets(0, 0, 8, 0)
+        );
 
         Label lblUsuario = new Label(
             "Usuário"
@@ -169,42 +161,9 @@ public class LoginView {
 
         txtUsuario.setPrefHeight(38);
 
-        txtUsuario.setStyle(
-            "-fx-background-color: #ffffff;" +
-            "-fx-border-color: #e0e0e0;" +
-            "-fx-border-radius: 6;" +
-            "-fx-background-radius: 6;" +
-            "-fx-padding: 0 10 0 10;"
-        );
+        aplicarEstiloNormal(txtUsuario);
 
-
-        txtUsuario.focusedProperty().addListener(
-            (obs, oldVal, newVal) -> {
-
-                txtUsuario.setStyle(
-                    newVal
-                    ?
-                    "-fx-background-color: #ffffff;" +
-                    "-fx-border-color: #b71c1c;" +
-                    "-fx-border-radius: 6;" +
-                    "-fx-background-radius: 6;" +
-                    "-fx-padding: 0 10 0 10;"
-
-                    :
-
-                    "-fx-background-color: #ffffff;" +
-                    "-fx-border-color: #e0e0e0;" +
-                    "-fx-border-radius: 6;" +
-                    "-fx-background-radius: 6;" +
-                    "-fx-padding: 0 10 0 10;"
-                );
-            }
-        );
-
-
-        // =========================================================
-        // SENHA
-        // =========================================================
+        lblErroUsuario = criarLabelErro();
 
         Label lblSenha = new Label(
             "Senha"
@@ -230,42 +189,9 @@ public class LoginView {
 
         txtSenha.setPrefHeight(38);
 
-        txtSenha.setStyle(
-            "-fx-background-color: #ffffff;" +
-            "-fx-border-color: #e0e0e0;" +
-            "-fx-border-radius: 6;" +
-            "-fx-background-radius: 6;" +
-            "-fx-padding: 0 10 0 10;"
-        );
+        aplicarEstiloNormal(txtSenha);
 
-
-        txtSenha.focusedProperty().addListener(
-            (obs, oldVal, newVal) -> {
-
-                txtSenha.setStyle(
-                    newVal
-                    ?
-                    "-fx-background-color: #ffffff;" +
-                    "-fx-border-color: #b71c1c;" +
-                    "-fx-border-radius: 6;" +
-                    "-fx-background-radius: 6;" +
-                    "-fx-padding: 0 10 0 10;"
-
-                    :
-
-                    "-fx-background-color: #ffffff;" +
-                    "-fx-border-color: #e0e0e0;" +
-                    "-fx-border-radius: 6;" +
-                    "-fx-background-radius: 6;" +
-                    "-fx-padding: 0 10 0 10;"
-                );
-            }
-        );
-
-
-        // =========================================================
-        // BOTÃO ENTRAR
-        // =========================================================
+        lblErroSenha = criarLabelErro();
 
         btnEntrar = new Button(
             "Entrar"
@@ -285,20 +211,13 @@ public class LoginView {
             )
         );
 
-        btnEntrar.setTextFill(
-            Color.WHITE
-        );
+        btnEntrar.setTextFill(Color.WHITE);
 
         btnEntrar.setStyle(
             "-fx-background-color: #b71c1c;" +
             "-fx-background-radius: 8;" +
             "-fx-cursor: hand;"
         );
-
-
-        // =========================================================
-        // RODAPÉ
-        // =========================================================
 
         Label lblFooter = new Label(
             "Casa do Aguardo"
@@ -329,22 +248,30 @@ public class LoginView {
         );
 
 
-        // Adiciona componentes
+        // =====================================================
+        // ADICIONA COMPONENTES AO FORMULÁRIO
+        // =====================================================
 
         formBox.getChildren().addAll(
+
             lblFacaLogin,
+
+            // Usuário
             lblUsuario,
             txtUsuario,
+            lblErroUsuario,
+
+            // Senha
             lblSenha,
             txtSenha,
+            lblErroSenha,
+
+            // Botão
             btnEntrar,
+
+            // Rodapé
             lblFooter
         );
-
-
-        // =========================================================
-        // 4. CARD DO LOGIN - LADO DIREITO
-        // =========================================================
 
         VBox card = new VBox();
 
@@ -356,9 +283,6 @@ public class LoginView {
             "-fx-background-color: #ffffff;" +
             "-fx-background-radius: 16;"
         );
-
-
-        // Sombra
 
         DropShadow shadow = new DropShadow();
 
@@ -378,11 +302,6 @@ public class LoginView {
             formBox
         );
 
-
-        // =========================================================
-        // 5. LOGO + LOGIN
-        // =========================================================
-
         HBox content = new HBox();
 
         content.setAlignment(
@@ -395,19 +314,10 @@ public class LoginView {
             new Insets(40)
         );
 
-
-        // Logo à esquerda
-        // Card à direita
-
         content.getChildren().addAll(
             logoView,
             card
         );
-
-
-        // =========================================================
-        // 6. CONTAINER PRINCIPAL
-        // =========================================================
 
         rootLayout = new StackPane(
             content
@@ -416,21 +326,123 @@ public class LoginView {
         rootLayout.setStyle(
             "-fx-background-color: #f2f3f5;"
         );
+
+        txtUsuario.textProperty().addListener(
+            (obs, oldValue, newValue) -> {
+
+                if (!newValue.trim().isEmpty()) {
+                    esconderErroUsuario();
+                }
+            }
+        );
+
+        txtSenha.textProperty().addListener(
+            (obs, oldValue, newValue) -> {
+
+                if (!newValue.isEmpty()) {
+                    esconderErroSenha();
+                }
+            }
+        );
+    }
+
+    private Label criarLabelErro() {
+
+        Label label = new Label();
+
+        label.setTextFill(
+            Color.web("#e53935")
+        );
+
+        label.setFont(
+            Font.font(
+                "Segoe UI",
+                11
+            )
+        );
+
+        label.setVisible(false);
+
+        label.setManaged(false);
+
+        return label;
+    }
+
+    private void aplicarEstiloNormal(
+            TextField campo) {
+
+        campo.setStyle(
+            "-fx-background-color: #ffffff;" +
+            "-fx-border-color: #e0e0e0;" +
+            "-fx-border-radius: 6;" +
+            "-fx-background-radius: 6;" +
+            "-fx-padding: 0 10 0 10;"
+        );
+    }
+
+    private void aplicarEstiloErro(
+            TextField campo) {
+
+        campo.setStyle(
+            "-fx-background-color: #ffffff;" +
+            "-fx-border-color: #e53935;" +
+            "-fx-border-radius: 6;" +
+            "-fx-background-radius: 6;" +
+            "-fx-padding: 0 10 0 10;"
+        );
     }
 
 
-    // =============================================================
-    // GET ROOT
-    // =============================================================
+    // =========================================================
+    // MOSTRAR ERRO DO USUÁRIO
+    // =========================================================
+
+    public void mostrarErroUsuario(
+            String mensagem) {
+        lblErroUsuario.setText(
+            mensagem
+        );
+        lblErroUsuario.setVisible(true);
+        lblErroUsuario.setManaged(true);
+        aplicarEstiloErro(
+            txtUsuario
+        );
+    }
+
+    public void esconderErroUsuario() {
+        lblErroUsuario.setText("");
+        lblErroUsuario.setVisible(false);
+        lblErroUsuario.setManaged(false);
+        aplicarEstiloNormal(
+            txtUsuario
+        );
+    }
+
+    public void mostrarErroSenha(
+            String mensagem) {
+
+        lblErroSenha.setText(
+            mensagem
+        );
+        lblErroSenha.setVisible(true);
+        lblErroSenha.setManaged(true);
+        aplicarEstiloErro(
+            txtSenha
+        );
+    }
+
+    public void esconderErroSenha() {
+        lblErroSenha.setText("");
+        lblErroSenha.setVisible(false);
+        lblErroSenha.setManaged(false);
+        aplicarEstiloNormal(
+            txtSenha
+        );
+    }
 
     public Parent getRoot() {
         return rootLayout;
     }
-
-
-    // =============================================================
-    // GETTERS
-    // =============================================================
 
     public TextField getTxtUsuario() {
         return txtUsuario;
