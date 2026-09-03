@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence xmlns="https://jakarta.ee/xml/ns/persistence"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="https://jakarta.ee/xml/ns/persistence
+                                 https://jakarta.ee/xml/ns/persistence/persistence_3_2.xsd"
+             version="3.2">
+
+    <persistence-unit name="CasaAguardoPU"
+                      transaction-type="RESOURCE_LOCAL">
+
+        <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+
+        <!-- Entidades -->
+        <class>com.domingos.jv.casaaguardo.model.Pessoa</class>
+        <class>com.domingos.jv.casaaguardo.model.Acompanhante</class>
+        <class>com.domingos.jv.casaaguardo.model.Paciente</class>
+        <class>com.domingos.jv.casaaguardo.model.Acompanhamento</class>
+        <class>com.domingos.jv.casaaguardo.model.AcompanhanteTelefone</class>
+        <class>com.domingos.jv.casaaguardo.model.PacienteInternamento</class>
+        <class>com.domingos.jv.casaaguardo.model.Usuario</class>
+        <class>com.domingos.jv.casaaguardo.model.Refeicao</class>
+
+        <properties>
+
+            <!-- Conexão com SQLite -->
+            <property name="jakarta.persistence.jdbc.driver"
+                      value="org.sqlite.JDBC"/>
+
+            <property name="jakarta.persistence.jdbc.url"
+                      value="jdbc:sqlite:db/casa_do_aguardo.db"/>
+
+            <!-- Hibernate -->
+            <property name="hibernate.dialect"
+                      value="org.hibernate.community.dialect.SQLiteDialect"/>
+
+            <property name="hibernate.hbm2ddl.auto"
+                      value="none"/>
+
+            <property name="hibernate.show_sql"
+                      value="true"/>
+
+            <property name="hibernate.format_sql"
+                      value="true"/>
+
+        </properties>
+
+    </persistence-unit>
+
+</persistence>
