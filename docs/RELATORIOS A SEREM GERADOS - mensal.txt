@@ -1,0 +1,6 @@
+RELATÓRIOS A SEREM GERADOS - mensal/anual
+
+- Quantidade de atendimentos;
+- lista de municípios e estados;
+- quantidade de refeições (manhã, almoço, tarde e janta) e
+- dias de permanência por pessoa.

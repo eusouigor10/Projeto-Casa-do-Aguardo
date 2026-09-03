@@ -5,5 +5,3 @@
 *.db
 
 *.sql
-
-DatabaseConnection.java
