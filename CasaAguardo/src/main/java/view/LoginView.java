@@ -39,7 +39,7 @@ public class LoginView {
     private void criarLayout() {
 
         Image logo = new Image(
-            getClass().getResourceAsStream("/images/logo.jpg")
+            getClass().getResourceAsStream("/images/logosb.png")
         );
 
         ImageView logoView = new ImageView(logo);
