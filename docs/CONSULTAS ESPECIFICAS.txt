@@ -2,4 +2,4 @@ CONSULTAS ESPECÍFICAS
 Pessoa: buscar por nome, buscar por cpf;
 Acompanhante: buscar por data de entrada/saída, buscar por renda, buscar por status, buscar por cidade, buscar por uf;
 Paciente: buscar por enfermidade, buscar por vinculo;
-Refeição: buscar por tipo;
+Refeição: buscar por tipo, busca por data.
