@@ -10,7 +10,6 @@ public class Acompanhante extends Pessoa {
  @Column(name="data_saida") private String dataSaida;
  @Column(name="renda") private Double renda;
  @Column(name="ocupacao") private String ocupacao;
- @Column(name="local") private String local;
  @Column(name="beneficios_governo") private String beneficiosGoverno;
  @Column(name="status") private String status;
  @Column(name="autorizacao_imagem", nullable=false) private Boolean autorizacaoImagem=false;
@@ -31,7 +30,6 @@ public class Acompanhante extends Pessoa {
  public String getDataSaida(){return dataSaida;} public void setDataSaida(String v){dataSaida=v;}
  public Double getRenda(){return renda;} public void setRenda(Double v){renda=v;}
  public String getOcupacao(){return ocupacao;} public void setOcupacao(String v){ocupacao=v;}
- public String getLocal(){return local;} public void setLocal(String v){local=v;}
  public String getBeneficiosGoverno(){return beneficiosGoverno;} public void setBeneficiosGoverno(String v){beneficiosGoverno=v;}
  public String getStatus(){return status;} public void setStatus(String v){status=v;}
  public Boolean getAutorizacaoImagem(){return autorizacaoImagem;} public void setAutorizacaoImagem(Boolean v){autorizacaoImagem=v;}
